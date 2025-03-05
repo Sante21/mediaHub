@@ -54,12 +54,3 @@ POST   /collections    # Crear colección
 GET    /watchlist      # Listado de pendientes
 POST   /reviews        # Agregar reseña
 ```
-
-## 📅 Plan de Desarrollo
-1️⃣ **Semana 1**: Diseño de la base de datos y configuración inicial de Laravel.  
-2️⃣ **Semana 2**: Implementación de autenticación y CRUD de contenido.  
-3️⃣ **Semana 3**: Desarrollo de colecciones y listas de seguimiento.  
-4️⃣ **Semana 4**: Mejoras en la UI/UX, validaciones y optimización.  
-
----
-📌 **MediaHub** busca ofrecer una experiencia personalizada y amigable para organizar el entretenimiento de los usuarios. ¡Vamos a construirlo juntos! 🚀
