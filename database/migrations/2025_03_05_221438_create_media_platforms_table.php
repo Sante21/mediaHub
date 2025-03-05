@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('creator_media', function (Blueprint $table) {
+        Schema::create('media_platforms', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('creator_id')->constrained('creators')->onDelete('cascade');
             $table->foreignId('media_id')->constrained('media')->onDelete('cascade');
+            $table->foreignId('platform_id')->constrained('platforms')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('creator_media');
+        Schema::dropIfExists('media_platforms');
     }
 };

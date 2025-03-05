@@ -54,3 +54,6 @@ POST   /collections    # Crear colección
 GET    /watchlist      # Listado de pendientes
 POST   /reviews        # Agregar reseña
 ```
+
+## 🧮 Diseño UML Base de Datos
+![Diseño UML Base de Datos](public/images/uml/mediHub.png)

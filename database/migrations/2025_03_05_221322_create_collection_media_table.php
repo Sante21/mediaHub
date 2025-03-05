@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('creator_media', function (Blueprint $table) {
+        Schema::create('collection_media', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignId('creator_id')->constrained('creators')->onDelete('cascade');
+            $table->foreignId('collection_id')->constrained('collections')->onDelete('cascade');
             $table->foreignId('media_id')->constrained('media')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('creator_media');
+        Schema::dropIfExists('collection_media');
     }
 };
