@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Creator;
-use App\Http\Requests\StoreCreatorRequest;
-use App\Http\Requests\UpdateCreatorRequest;
+use App\Models\CategoryMedia;
+use App\Http\Requests\StoreCategoryMediaRequest;
+use App\Http\Requests\UpdateCategoryMediaRequest;
 
-class CreatorController extends Controller
+class CategoryMediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class CreatorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCreatorRequest $request)
+    public function store(StoreCategoryMediaRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class CreatorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Creator $creator)
+    public function show(CategoryMedia $categoryMedia)
     {
         //
     }
@@ -43,7 +43,7 @@ class CreatorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Creator $creator)
+    public function edit(CategoryMedia $categoryMedia)
     {
         //
     }
@@ -51,7 +51,7 @@ class CreatorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCreatorRequest $request, Creator $creator)
+    public function update(UpdateCategoryMediaRequest $request, CategoryMedia $categoryMedia)
     {
         //
     }
@@ -59,7 +59,7 @@ class CreatorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Creator $creator)
+    public function destroy(CategoryMedia $categoryMedia)
     {
         //
     }

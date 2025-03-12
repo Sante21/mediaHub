@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\CreatorMedia;
+use App\Models\CategoryMedia;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class CreatorMediaPolicy
+class CategoryMediaPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class CreatorMediaPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, CreatorMedia $creatorMedia): bool
+    public function view(User $user, CategoryMedia $categoryMedia): bool
     {
         return false;
     }
@@ -35,7 +35,7 @@ class CreatorMediaPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, CreatorMedia $creatorMedia): bool
+    public function update(User $user, CategoryMedia $categoryMedia): bool
     {
         return false;
     }
@@ -43,7 +43,7 @@ class CreatorMediaPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, CreatorMedia $creatorMedia): bool
+    public function delete(User $user, CategoryMedia $categoryMedia): bool
     {
         return false;
     }
@@ -51,7 +51,7 @@ class CreatorMediaPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, CreatorMedia $creatorMedia): bool
+    public function restore(User $user, CategoryMedia $categoryMedia): bool
     {
         return false;
     }
@@ -59,7 +59,7 @@ class CreatorMediaPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, CreatorMedia $creatorMedia): bool
+    public function forceDelete(User $user, CategoryMedia $categoryMedia): bool
     {
         return false;
     }

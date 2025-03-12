@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('creators', function (Blueprint $table) {
+        Schema::create('category_media', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->enum('type', ['actor', 'director', 'company']);
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('media_id')->constrained()->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('creators');
+        Schema::dropIfExists('category_media');
     }
 };

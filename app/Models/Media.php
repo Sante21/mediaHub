@@ -15,12 +15,12 @@ class Media extends Model
         'description',
         'release_year',
         'type',
-        'category_id',
+        // 'category_id',
     ];
 
     // Relations
-    public function category() {
-        return $this->belongsTo(Category::class);
+    public function categories() {
+        return $this->belongsToMany(Category::class, 'category_media')->withTimestamps();
     }
 
     public function collections() {
@@ -39,8 +39,7 @@ class Media extends Model
         return $this->belongsToMany(Platform::class, 'media_platform')->withTimestamps();
     }
 
-    public function creators() {
-        return $this->belongsToMany(Creator::class, 'creator_media')->withTimestamps();
-    }
-
+    // public function creators() {
+    //     return $this->belongsToMany(Creator::class, 'creator_media')->withTimestamps();
+    // }
 }

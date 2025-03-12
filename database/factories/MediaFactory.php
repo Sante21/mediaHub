@@ -14,10 +14,16 @@ class MediaFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(4),
+            'description' => $this->faker->paragraph(),
+            'release_year' => $this->faker->dateTime(),
+            'type' => $this->faker->randomElement(['film', 'series', 'game']),
+            'category' => $this->faker->randomElement(['horror', 'Thriller', 'Fantasy', 'Action', 'Comedy', 'Post-Apocaliptic', 'Historical']),
         ];
     }
+
 }
