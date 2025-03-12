@@ -22,9 +22,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            // ResponsableSeeder::class,
-            // ClienteSeeder::class,
-            // TareaSeeder::class,
+            CategorySeeder::class,
+            PlatformSeeder::class,
+            MediaSeeder::class,
+            WatchlistSeeder::class,
+            CollectionSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }
