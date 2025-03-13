@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\MediaPlatform;
 
 class MediaPlatformSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class MediaPlatformSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        // MediaPlatform::factory(15)->create();
     }
 }

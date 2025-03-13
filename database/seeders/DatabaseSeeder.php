@@ -25,9 +25,12 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             PlatformSeeder::class,
             MediaSeeder::class,
+            MediaPlatformSeeder::class,
             WatchlistSeeder::class,
             CollectionSeeder::class,
+            CollectionMediaSeeder::class,
             ReviewSeeder::class,
+
         ]);
     }
 }
