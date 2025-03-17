@@ -121,8 +121,8 @@
             <p class="text-sm text-center text-gray-600">v0.1 | &copy; 2025 Media HUB</p>
         </div>
         <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6">
-            <x-inicio>
-            </x-inicio>
+            <x-media.create>
+            </x-media.create>
         </div>
     </div>
 </div>

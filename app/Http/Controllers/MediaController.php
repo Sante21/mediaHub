@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Media;
 use App\Http\Requests\StoreMediaRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateMediaRequest;
 
 class MediaController extends Controller
@@ -13,8 +14,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $allMedia = Media::class->get();
-        return view('viewMedia');
+        $medias = Media::all();
+        return view('medias', compact('medias'));
     }
 
     /**
@@ -22,25 +23,32 @@ class MediaController extends Controller
      */
     public function create()
     {
-        return view('newtask');
+        return view('media.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMediaRequest $request)
+    public function store(Request $request)
     {
+        $valid = $request->validate([
+            'title' => 'required|string|max:250',
+            'description' => 'required|string|max:500',
+            'release_year' => 'required|date',
+            'type' => 'required|string',
+        ],
+        [
+            'release_year.date' => 'Debe de ser una fecha'
+        ]);
         $media = new Media();
 
-        $media-> title = $r->input('title');
-        $media-> description = $r->input('description');
-        $media-> completed = false;
-        $media-> date = $r->input('due_date');
-        $media-> asignto = $r->input('asignto');
-        $media-> priority = $r->input('priority');
+        $media-> title = $valid['title'];
+        $media-> description = $valid['description'];
+        $media-> release_year = $valid['release_year'];
+        $media-> type = $valid['type'];
 
         $media->save();
-        return redirect('/');
+        return redirect('/home');
     }
 
     /**
@@ -48,8 +56,7 @@ class MediaController extends Controller
      */
     public function show(Media $media)
     {
-        $tasks = Task::all();
-        return view('index', ['tasks' => $tasks]);
+        return view('media.show', compact('media'));
     }
 
     /**
@@ -57,26 +64,35 @@ class MediaController extends Controller
      */
     public function edit(Media $media)
     {
-        $task = Task::find($id);
-        return view('newtask', compact('task'));
+        $media = Media::find($id);
+        return view('media.create');
+        return view('newmedia', compact('media'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMediaRequest $request, Media $media)
+    public function update(Request $request, Media $media)
     {
-        $task = Task::find($id);
+        $valid = $request->validate([
+            'title' => 'required|string|max:250',
+            'description' => 'required|string|max:500',
+            'release_year' => 'required|date',
+            'type' => 'required|string',
+        ],
+        [
+            'release_year.date' => 'Debe de ser una fecha'
+        ]);
+        $media = new Media();
 
-        $task-> title = $r->input('title');
-        $task-> description = $r->input('description');
-        $task-> completed = false;
-        $task-> date = $r->input('due_date');
-        $task-> asignto = $r->input('asignto');
-        $task-> priority = $r->input('priority');
+        $media-> title = $valid['title'];
+        $media-> description = $valid['description'];
+        $media-> release_year = $valid['release_year'];
+        $media-> release_year = $valid['release_year'];
+        $media-> type = $valid['type'];
 
-        $task->save();
-        return redirect('/');
+        $media->save();
+        return redirect('/home');
     }
 
     /**
@@ -84,8 +100,8 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-        $task = Task::find($id);
-        $task->delete();
-        return redirect('/');
+        $media = Media::find($id);
+        $media->delete();
+        return redirect('/media');
     }
 }

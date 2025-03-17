@@ -30,7 +30,6 @@ class DatabaseSeeder extends Seeder
             CollectionSeeder::class,
             CollectionMediaSeeder::class,
             ReviewSeeder::class,
-
         ]);
     }
 }

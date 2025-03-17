@@ -55,7 +55,7 @@
 
                     </div>
                 </a>
-                <a href="/media"
+                <a href="/mediaV"
                     class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
                     <div class="relative flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                         <div>
@@ -121,8 +121,8 @@
             <p class="text-sm text-center text-gray-600">v0.1 | &copy; 2025 Media HUB</p>
         </div>
         <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6">
-            <x-inicio>
-            </x-inicio>
+            <x-media>
+            </x-media>
         </div>
     </div>
 </div>

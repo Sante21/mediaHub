@@ -22,7 +22,19 @@ class StoreMediaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:250',
+            'description' => 'required|string|max:500',
+            'release_year' => 'required|date',
+            'type' => 'required|string',
+        ];
+    }
+
+    public function messages() {
+        return [
+            'title.string' => 'Debe de ser un string',
+            'description.string' => 'Debe de ser un string',
+            'release_year.date' => 'Debe de ser una fecha',
+            'type.string' => 'Debe de ser una string'
         ];
     }
 }

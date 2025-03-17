@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -8,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/mediaV', function () {
+Route::get('/mediaView', function () {
     return view('media');
 });
 
@@ -19,19 +20,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/home', [HomeController::class, 'home'])->middleware(['auth'])->name('home');
 
-// Route::get('/media', [MediaController::class, 'media'])->middleware(['auth'])->name('media');
-
 Route::middleware('auth')->group(function () {
-
-
 });
 
 Route::resource('media', MediaController::class);
-Route::resource('collection', CollectionController::class);
-Route::resource('watchlist', WatchlistController::class);
-Route::resource('plattform', PlattformController::class);
-Route::resource('category', CategoryController::class);
-Route::resource('user', UserController::class);
+// Route::resource('collection', CollectionController::class);
+// Route::resource('watchlist', WatchlistController::class);
+// Route::resource('plattform', PlattformController::class);
+// Route::resource('category', CategoryController::class);
+// Route::resource('user', UserController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
