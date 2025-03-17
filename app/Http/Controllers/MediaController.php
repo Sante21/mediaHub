@@ -13,7 +13,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        $allMedia = Media::class->get();
+        return view('viewMedia');
     }
 
     /**
@@ -21,7 +22,7 @@ class MediaController extends Controller
      */
     public function create()
     {
-        //
+        return view('newtask');
     }
 
     /**
@@ -29,7 +30,17 @@ class MediaController extends Controller
      */
     public function store(StoreMediaRequest $request)
     {
-        //
+        $media = new Media();
+
+        $media-> title = $r->input('title');
+        $media-> description = $r->input('description');
+        $media-> completed = false;
+        $media-> date = $r->input('due_date');
+        $media-> asignto = $r->input('asignto');
+        $media-> priority = $r->input('priority');
+
+        $media->save();
+        return redirect('/');
     }
 
     /**
@@ -37,7 +48,8 @@ class MediaController extends Controller
      */
     public function show(Media $media)
     {
-        //
+        $tasks = Task::all();
+        return view('index', ['tasks' => $tasks]);
     }
 
     /**
@@ -45,7 +57,8 @@ class MediaController extends Controller
      */
     public function edit(Media $media)
     {
-        //
+        $task = Task::find($id);
+        return view('newtask', compact('task'));
     }
 
     /**
@@ -53,7 +66,17 @@ class MediaController extends Controller
      */
     public function update(UpdateMediaRequest $request, Media $media)
     {
-        //
+        $task = Task::find($id);
+
+        $task-> title = $r->input('title');
+        $task-> description = $r->input('description');
+        $task-> completed = false;
+        $task-> date = $r->input('due_date');
+        $task-> asignto = $r->input('asignto');
+        $task-> priority = $r->input('priority');
+
+        $task->save();
+        return redirect('/');
     }
 
     /**
@@ -61,6 +84,8 @@ class MediaController extends Controller
      */
     public function destroy(Media $media)
     {
-        //
+        $task = Task::find($id);
+        $task->delete();
+        return redirect('/');
     }
 }
