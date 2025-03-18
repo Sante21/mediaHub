@@ -67,9 +67,9 @@ class MediaController extends Controller
      */
     public function edit(Media $media)
     {
-        $media = Media::find($id);
-        return view('media.create');
-        return view('newmedia', compact('media'));
+        // $media = Media::find($id);
+        return view('media.update', compact('media'));
+        // return view('newmedia', compact('media'));
     }
 
     /**
@@ -91,17 +91,18 @@ class MediaController extends Controller
         $media-> title = $valid['title'];
         $media-> description = $valid['description'];
         $media-> release_year = $valid['release_year'];
-        $media-> release_year = $valid['release_year'];
         $media-> type = $valid['type'];
 
         $media->save();
         return redirect('/home');
+
+        Media::update($valid);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Media $media)
+    public function destroy($id)
     {
         $media = Media::find($id);
         $media->delete();

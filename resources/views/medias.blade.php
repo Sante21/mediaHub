@@ -22,7 +22,7 @@
         <x-content>
             <button><a href="media/create">Crear una nueva media</a></button>
             @foreach ($medias as $card)
-                <x-mediaCard title="{{$card->title}}" descr="{{$card->description}}">
+                <x-mediaCard id="{{$card->id}}" title="{{$card->title}}" descr="{{$card->description}}">
                 </x-mediaCard>
                 {{-- <h1>{{$card->type}}</h1> --}}
             @endforeach
