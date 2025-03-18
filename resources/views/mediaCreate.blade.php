@@ -18,10 +18,9 @@
     <div class="grid grid-cols-12 mx-auto gap-2 sm:gap-4 md:gap-6 lg:gap-10 xl:gap-14 max-w-7xl my-10 px-2">
         <x-menu>
         </x-menu>
-
-        <x-content>
-            <x-inicio>
-            </x-inicio>
-        </x-content>
+        <div id="content" class="bg-white/10 col-span-9 rounded-lg p-6">
+            <x-media-create>
+            </x-media-create>
+        </div>
     </div>
 </div>

@@ -40,14 +40,17 @@ class MediaController extends Controller
         [
             'release_year.date' => 'Debe de ser una fecha'
         ]);
-        $media = new Media();
+        // $media = new Media();
 
-        $media-> title = $valid['title'];
-        $media-> description = $valid['description'];
-        $media-> release_year = $valid['release_year'];
-        $media-> type = $valid['type'];
+        // $media-> title = $valid['title'];
+        // $media-> description = $valid['description'];
+        // $media-> release_year = $valid['release_year'];
+        // $media-> type = $valid['type'];
 
-        $media->save();
+        // $media->save();
+
+        Media::create($valid);
+
         return redirect('/home');
     }
 
