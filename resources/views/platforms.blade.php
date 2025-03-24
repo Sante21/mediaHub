@@ -20,9 +20,9 @@
         </x-menu>
 
         <x-content>
-            <button><a href="media/create">Crear una nueva media</a></button>
-            @foreach ($medias as $card)
-                <x-mediaCard media="{{$card}}" id="{{$card->id}}" title="{{$card->title}}" descr="{{$card->description}}">
+            <button><a href="platform/create">Crear una nueva plataforma</a></button>
+            @foreach ($platforms as $platform)
+                <x-mediaCard platform="{{$platform}}" id="{{$platform->id}}" title="{{$platform->title}}" descr="{{$platform->description}}">
                 </x-mediaCard>
                 {{-- <h1>{{$card->type}}</h1> --}}
             @endforeach

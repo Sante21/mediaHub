@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\WatchlistController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -24,11 +29,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('media', MediaController::class);
+Route::resource('platform', PlatformController::class);
+Route::resource('user', UserController::class);
 // Route::resource('collection', CollectionController::class);
 // Route::resource('watchlist', WatchlistController::class);
-// Route::resource('plattform', PlattformController::class);
 // Route::resource('category', CategoryController::class);
-// Route::resource('user', UserController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

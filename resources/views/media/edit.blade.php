@@ -1,5 +1,5 @@
 
-<form action="{{ route('media.update') }}" method="post">
+<form action="{{ route('media.update', $media->id) }}" method="post">
     @csrf
     @error('release_year')
         <div>

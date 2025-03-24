@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collection;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCollectionRequest;
 use App\Http\Requests\UpdateCollectionRequest;
 
@@ -13,7 +14,8 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        //
+        $collections = Collection::all();
+        return view('collections', compact('collections'));
     }
 
     /**
@@ -21,15 +23,27 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('collection.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCollectionRequest $request)
+    public function store(Request $request)
     {
-        //
+        $valid = $request->validate([
+            'title' => 'required|string|max:250',
+            'description' => 'required|string|max:500',
+            'release_year' => 'required|date',
+            'type' => 'required|string',
+        ],
+        [
+            'release_year.date' => 'Debe de ser una fecha'
+        ]);
+
+        Media::create($valid);
+
+        return redirect('/collection');
     }
 
     /**

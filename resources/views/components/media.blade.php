@@ -1,7 +1,6 @@
 
 <div>
-    <button><a href="/media/create">Crear nueva Media</a></button>
-    @foreach ($medias as $media)
-
-    @endforeach
+    <button>
+        <a href="/media/create">Crear nueva Media</a>
+    </button>
 </div>

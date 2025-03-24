@@ -51,7 +51,7 @@
                     <p
                         class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
                         Media</p>
-                    <p class="text-slate-400 text-sm hidden md:block">Manage invoices</p>
+                    <p class="text-slate-400 text-sm hidden md:block">Manage medias</p>
                 </div>
                 <div
                     class="absolute -top-3 -right-3 md:top-0 md:right-0 px-2 py-1.5 rounded-full bg-indigo-800 text-xs font-mono font-bold">
@@ -59,7 +59,42 @@
                 </div>
             </div>
         </a>
-        <a href="#"
+        <a href="/platform"
+            class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
+            <div class="relative flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:text-indigo-400">
+                        <path d="M2 16.1A5 5 0 0 1 5.9 20M2 12.05A9 9 0 0 1 9.95 20M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"></path><line x1="2" y1="20" x2="2.01" y2="20"></line>
+                    </svg>
+                </div>
+                <div>
+                    <p
+                        class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
+                        Platform</p>
+                    <p class="text-slate-400 text-sm hidden md:block">Manage platforms</p>
+                </div>
+            </div>
+        </a>
+        <a href="/watchlist"
+            class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
+            <div class="relative flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:text-indigo-400">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <p
+                        class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
+                        Watchlist</p>
+                    <p class="text-slate-400 text-sm hidden md:block">Manage watchlist</p>
+                </div>
+            </div>
+        </a>
+        <a href="/user"
             class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                 <div>

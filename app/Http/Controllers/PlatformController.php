@@ -13,7 +13,8 @@ class PlatformController extends Controller
      */
     public function index()
     {
-        //
+        $platforms = Platform::all();
+        return view('platforms', compact('platforms'));
     }
 
     /**
@@ -21,7 +22,7 @@ class PlatformController extends Controller
      */
     public function create()
     {
-        //
+        return view('platform.create');
     }
 
     /**

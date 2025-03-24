@@ -1,4 +1,4 @@
-<form action="{{ route('media.store') }}" method="post">
+<form action="{{ route('platform.store') }}" method="post">
     @csrf
     @error('release_year')
         <div>

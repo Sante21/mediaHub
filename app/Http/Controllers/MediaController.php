@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
-use App\Http\Requests\StoreMediaRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreMediaRequest;
 use App\Http\Requests\UpdateMediaRequest;
 
 class MediaController extends Controller
@@ -51,7 +51,7 @@ class MediaController extends Controller
 
         Media::create($valid);
 
-        return redirect('/home');
+        return redirect('/media');
     }
 
     /**
@@ -67,8 +67,9 @@ class MediaController extends Controller
      */
     public function edit(Media $media)
     {
-        // $media = Media::find($id);
-        return view('media.update', compact('media'));
+        // var_dump( $media);
+         $media = Media::find($media->id);
+        return view('media.edit', compact('media'));
         // return view('newmedia', compact('media'));
     }
 
