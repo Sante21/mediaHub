@@ -57,3 +57,64 @@ POST   /reviews        # Agregar reseña
 
 ## 🧮 Diseño UML Base de Datos
 ![Diseño UML Base de Datos](public/images/uml/mediHub.png)
+
+# Instalación del Proyecto Laravel
+
+Este es un proyecto basado en Laravel que utiliza varias herramientas como `npm`, `Vite` y `PHP`. Para instalar y configurar el proyecto, sigue los siguientes pasos.
+
+## Requisitos previos
+
+Antes de comenzar, asegúrate de tener las siguientes herramientas instaladas en tu máquina:
+
+- [PHP](https://www.php.net/) (se recomienda versión 8.0 o superior)
+- [Composer](https://getcomposer.org/) (para gestionar dependencias de PHP)
+- [Node.js](https://nodejs.org/) (se recomienda versión LTS)
+- [npm](https://www.npmjs.com/) (gestor de paquetes de Node.js)
+
+## Pasos para la instalación
+
+### 1. Clonar el repositorio
+
+Primero, clona el repositorio a tu máquina local usando Git:
+
+```bash
+git clone https://github.com/Sante21/mediaHub.git
+cd mediaHub
+```
+
+### 2. Instalar las dependencias de PHP
+
+Instala las dependencias de PHP utilizando Composer. Esto descargará las bibliotecas necesarias para ejecutar Laravel.
+
+```bash
+composer install
+```
+
+### 3. Instalar las dependencias de Node.js
+
+Instala las dependencias de JavaScript y herramientas como Vite utilizando npm. Esto descargará las dependencias necesarias para el frontend.
+
+```bash
+npm install
+```
+
+### 4. Configurar la base de datos
+
+Configura la conexión a la base de datos en el archivo .env. Asegúrate de definir las variables correspondientes, como:
+
+```javascript
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nombre_de_base_de_datos
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
+```
+
+### 5. Iniciar el servidor de desarrollo
+
+Ahora que todas las dependencias están instaladas y configuradas, puedes iniciar el servidor de desarrollo de Laravel con el siguiente comando:
+
+```bash
+composer run dev
+```
