@@ -13,6 +13,13 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        // User::factory(10)->create();
+        // $roleAdmin = Role::where('name', 'Admin')->first();
+        // $roleMember = Role::where('name', 'Member')->first();
+
+        // User::factory(2)->create()->each(function($user) use ($roleAdmin) {
+
+        // });
         User::factory(10)->create();
     }
 }

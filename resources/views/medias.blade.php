@@ -21,11 +21,16 @@
 
         <x-content>
             <button><a href="media/create">Crear una nueva media</a></button>
-            @foreach ($medias as $card)
-                <x-mediaCard media="{{$card}}" id="{{$card->id}}" title="{{$card->title}}" descr="{{$card->description}}">
-                </x-mediaCard>
-                {{-- <h1>{{$card->type}}</h1> --}}
-            @endforeach
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
+                @foreach ($medias as $card)
+                    <div class="col-span-1">
+                        <x-mediaCard media="{{ $card }}" id="{{ $card->id }}" title="{{ $card->title }}"
+                            descr="{{ $card->description }}">
+                        </x-mediaCard>
+                        {{-- <h1>{{$card->type}}</h1> --}}
+                    </div>
+                @endforeach
+            </div>
             {{-- <x-media>
             </x-media> --}}
         </x-content>

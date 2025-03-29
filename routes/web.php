@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('media', MediaController::class);
 Route::resource('platform', PlatformController::class);
+
 Route::resource('user', UserController::class);
 // Route::resource('collection', CollectionController::class);
 // Route::resource('watchlist', WatchlistController::class);

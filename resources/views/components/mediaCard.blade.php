@@ -1,6 +1,14 @@
 <!-- component -->
-<!-- component -->
-<div class="flex justify-center items-center min-h-screen">
+<style>
+    * {
+        scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+<div class="flex justify-center items-center">
     <div class="max-w-[720px] mx-auto">
         <!-- Centering wrapper -->
         <div
@@ -41,7 +49,8 @@
                         5.0
                     </p>
                 </div>
-                <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
+                <p
+                    class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700 max-w-xs max-h-17 overflow-auto whitespace-normal">
                     {{ $descr }}
                 </p>
                 <div class="inline-flex flex-wrap items-center gap-3 mt-8 group">
