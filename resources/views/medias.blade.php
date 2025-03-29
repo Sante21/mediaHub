@@ -20,7 +20,9 @@
         </x-menu>
 
         <x-content>
-            <button><a href="media/create">Crear una nueva media</a></button>
+            @role('admin')
+                <button><a href="media/create">Crear una nueva media</a></button>
+            @endrole
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4">
                 @foreach ($medias as $card)
                     <div class="col-span-1">

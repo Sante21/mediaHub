@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->date('release_year');
             $table->enum('type', ['movie', 'series', 'game']);
+            $table->string('image')->nullable();
             // $table->foreignId('category_id')->constrained()->onDelete('cascade');
             // $table->enum('category', ['horror', 'Thriller', 'Fantasy', 'Action', 'Comedy', 'Post-Apocaliptic', 'Historical']);
 

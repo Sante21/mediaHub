@@ -15,7 +15,7 @@ class Media extends Model
         'description',
         'release_year',
         'type',
-        // 'category_id',
+        'image'
     ];
 
     // Relations

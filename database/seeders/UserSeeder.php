@@ -20,6 +20,12 @@ class UserSeeder extends Seeder
         // User::factory(2)->create()->each(function($user) use ($roleAdmin) {
 
         // });
+        User::create([
+            'name' => 'Iker',
+            'email' => 'ikersan2005@gmail.com',
+            'password' => '12345678', // Asegúrate de usar una contraseña segura
+        ]);
+
         User::factory(10)->create();
     }
 }

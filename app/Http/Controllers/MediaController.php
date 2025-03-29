@@ -23,7 +23,8 @@ class MediaController extends Controller
      */
     public function create()
     {
-        return view('media.create');
+        $medias = Media::all();
+        return view('media.create', compact('medias'));
     }
 
     /**
