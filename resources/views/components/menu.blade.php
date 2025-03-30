@@ -1,7 +1,7 @@
 <div id="menu" class="bg-white/10 col-span-3 rounded-lg p-4 ">
     <h1
         class="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent">
-        Panel de Control<span class="text-indigo-400">.</span></h1>
+        MediaHUB<span class="text-indigo-400">.</span></h1>
     <p class="text-slate-400 text-sm mb-2">Bienvenido de nuevo,</p>
     <a href="#"
         class="flex flex-col space-y-2 md:space-y-0 md:flex-row mb-5 items-center md:space-x-2 hover:bg-white/10 group transition duration-150 ease-linear rounded-lg group w-full py-3 px-2">
@@ -22,7 +22,7 @@
             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:text-indigo-400">
+                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:text-indigo-400 peer-checked:text-indigo-400">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                     </svg>
@@ -30,7 +30,7 @@
                 </div>
                 <div>
                     <p
-                        class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
+                        class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400 peer-checked:text-indigo-400">
                         Home</p>
                     <p class="text-slate-400 text-sm hidden md:block">Data overview</p>
                 </div>
@@ -88,7 +88,7 @@
                 </div>
                 <div>
                     <p
-                        class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400">
+                        class="font-bold text-base lg:text-lg text-slate-200 leading-4 group-hover:text-indigo-400 peer-checked:text-indigo-400">
                         Watchlist</p>
                     <p class="text-slate-400 text-sm hidden md:block">Manage watchlist</p>
                 </div>
@@ -113,7 +113,7 @@
 
             </div>
         </a>
-        <a href="#"
+        <a :href="route('profile.edit')"
             class="hover:bg-white/10 transition duration-150 ease-linear rounded-lg py-3 px-2 group">
             <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 space-x-2 items-center">
                 <div>

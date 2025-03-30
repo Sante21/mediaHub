@@ -15,6 +15,9 @@ class MediaController extends Controller
     public function index()
     {
         $medias = Media::all();
+        $medias = Media::with(['platforms', 'reviews'])
+        ->withAvg('reviews', 'rating') // Calcula el promedio de rating por cada media
+        ->get();
         return view('medias', compact('medias'));
     }
 
@@ -37,6 +40,7 @@ class MediaController extends Controller
             'description' => 'required|string|max:500',
             'release_year' => 'required|date',
             'type' => 'required|string',
+            /*'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120', // Validación de la imagen*/
         ],
         [
             'release_year.date' => 'Debe de ser una fecha'
@@ -49,6 +53,12 @@ class MediaController extends Controller
         // $media-> type = $valid['type'];
 
         // $media->save();
+
+        // Manejo de la imagen
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $imagePath = $request->file('image')->store('images', 'public'); // Guardar la imagen en el almacenamiento público
+            $valid['image'] = $imagePath; // Asignar la ruta de la imagen al arreglo de validación
+        }
 
         Media::create($valid);
 
@@ -84,6 +94,7 @@ class MediaController extends Controller
             'description' => 'required|string|max:500',
             'release_year' => 'required|date',
             'type' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048', // Validación de la imagen
         ],
         [
             'release_year.date' => 'Debe de ser una fecha'
@@ -94,6 +105,7 @@ class MediaController extends Controller
         $media-> description = $valid['description'];
         $media-> release_year = $valid['release_year'];
         $media-> type = $valid['type'];
+        $media-> image = $valid['image'];
 
         $media->save();
         return redirect('/home');

@@ -61,6 +61,18 @@
                                     </div>
                                     <div class="w-full px-3 mb-6">
                                         <label class="block uppercase tracking-wide text-white text-sm font-bold mb-2"
+                                            for="platform_select">Select the Type</label>
+                                        <select
+                                            class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none focus:border-[#98c01d]"
+                                            name="platform" id="platform_select" required>
+                                            <option value="">Select the type</option>
+                                            <option value="movie">Movie</option>
+                                            <option value="series">Series</option>
+                                            <option value="game">Game</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-full px-3 mb-6">
+                                        <label class="block uppercase tracking-wide text-white text-sm font-bold mb-2"
                                             for="platform_select">Select Platform</label>
                                         <select
                                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none focus:border-[#98c01d]"
@@ -76,7 +88,7 @@
 
                                     <div class="w-full md:w-full px-3 mb-6">
                                         <button
-                                            class="appearance-none block w-full bg-green-700 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-green-600 focus:outline-none focus:bg-white focus:border-gray-500">
+                                            class="appearance-none block w-full bg-green-700 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-green-600 focus:outline-none focus:bg-white focus:text-green-600 focus:border-green-800">
                                             Add Media</button>
                                     </div>
 
@@ -94,45 +106,44 @@
                                             <h2 class="mt-4 text-xl font-medium text-gray-700 tracking-wide">Media
                                                 image</h2>
 
-                                            <p class="mt-2 text-gray-500 tracking-wide">Upload or drag & drop your file
+                                            <p class="mt-2 text-gray-500 tracking-wide">Upload your file
                                                 SVG, PNG, JPG or GIF. </p>
 
                                             <input id="dropzone-file" type="file" class="hidden"
                                                 name="category_image" accept="image/png, image/jpeg, image/webp" />
                                         </label>
                                     </div>
-
                                 </div>
                             </form>
                         </div>
-                        <div class="w-full lg:w-2/3 m-1 bg-white shadow-lg text-lg rounded-sm border border-gray-200">
+                        <div class="w-full lg:w-2/3 m-1 bg-black/60 shadow-lg text-lg rounded-sm">
                             <div class="overflow-x-auto rounded-lg p-3">
                                 <table class="table-auto w-full">
-                                    <thead class="text-sm font-semibold uppercase text-gray-800 bg-gray-50 mx-auto">
-                                        <tr>
+                                    <thead class="text-sm font-semibold uppercase text-gray-800 bg-black/60 mx-auto">
+                                        <tr class="border border-b-white border-black/60">
                                             <th></th>
                                             <th><svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="fill-current w-5 h-5 mx-auto">
+                                                    class="fill-current w-5 h-5 mx-auto text-white">
                                                     <path
                                                         d="M6 22h12a2 2 0 0 0 2-2V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm7-18 5 5h-5V4zm-4.5 7a1.5 1.5 0 1 1-.001 3.001A1.5 1.5 0 0 1 8.5 11zm.5 5 1.597 1.363L13 13l4 6H7l2-3z">
                                                     </path>
                                                 </svg></th>
                                             <th class="p-2">
-                                                <div class="font-semibold">Category</div>
+                                                <div class="font-semibold text-white">Media</div>
                                             </th>
                                             <th class="p-2">
-                                                <div class="font-semibold text-left">Description</div>
+                                                <div class="font-semibold text-left text-white">Description</div>
                                             </th>
                                             <th class="p-2">
-                                                <div class="font-semibold text-center">Action</div>
+                                                <div class="font-semibold text-center text-white">Action</div>
                                             </th>
                                         </tr>
                                         <tr>
-                                            <td>1</td>
+                                            <td class="text-white">1</td>
                                             <td><img src="https://images.pexels.com/photos/25652584/pexels-photo-25652584/free-photo-of-elegant-man-wearing-navy-suit.jpeg?auto=compress&cs=tinysrgb&w=400"
                                                     class="h-8 w-8 mx-auto" /></td>
-                                            <td>Sample Name</td>
-                                            <td>Sample Description</td>
+                                            <td class="text-white">Sample Name</td>
+                                            <td class="text-white">Sample Description</td>
                                             <td class="p-2">
                                                 <div class="flex justify-center">
                                                     <a href="#"

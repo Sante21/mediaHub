@@ -27,11 +27,29 @@
                 @foreach ($medias as $card)
                     <div class="col-span-1">
                         <x-mediaCard media="{{ $card }}" id="{{ $card->id }}" title="{{ $card->title }}"
-                            descr="{{ $card->description }}">
+                            rating="{{ $card->raring }}" descr="{{ $card->description }}">
                         </x-mediaCard>
-                        {{-- <h1>{{$card->type}}</h1> --}}
                     </div>
                 @endforeach
+
+                @foreach ($medias as $media)
+                    <div class="media-card">
+                        <h2>{{ $media->title }}</h2>
+                        <p>Rating: {{ number_format($media->reviews_avg_rating, 1) ?? 'No hay valoraciones' }}</p>
+
+                        @if ($media->platforms->isNotEmpty())
+                            <p>Plataformas:</p>
+                            <ul>
+                                @foreach ($media->platforms as $platform)
+                                    <li>{{ $platform->name }}</li>
+                                @endforeach
+                            </ul>
+                        @else
+                            <p>No disponible en ninguna plataforma.</p>
+                        @endif
+                    </div>
+                @endforeach
+
             </div>
             {{-- <x-media>
             </x-media> --}}

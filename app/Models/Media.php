@@ -36,7 +36,7 @@ class Media extends Model
     }
 
     public function platforms() {
-        return $this->belongsToMany(Platform::class, 'media_platform')->withTimestamps();
+        return $this->belongsToMany(Platform::class, 'media_platforms')->withTimestamps();
     }
 
     // public function creators() {
