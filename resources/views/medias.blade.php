@@ -28,31 +28,20 @@
                     <div class="col-span-1">
                         <x-mediaCard media="{{ $card }}" id="{{ $card->id }}" title="{{ $card->title }}"
                             rating="{{ $card->raring }}" descr="{{ $card->description }}">
+                            <x-slot name="platform">
+                                @foreach ($card->platforms as $platform)
+                                    <li>{{ $platform->name }}</li>
+                                @endforeach
+                            </x-slot>
+                            <x-slot name="category">
+                                @foreach ($card->categories as $category)
+                                    <li>{{ $category->name }}</li>
+                                @endforeach
+                            </x-slot>
                         </x-mediaCard>
                     </div>
                 @endforeach
-
-                @foreach ($medias as $media)
-                    <div class="media-card">
-                        <h2>{{ $media->title }}</h2>
-                        <p>Rating: {{ number_format($media->reviews_avg_rating, 1) ?? 'No hay valoraciones' }}</p>
-
-                        @if ($media->platforms->isNotEmpty())
-                            <p>Plataformas:</p>
-                            <ul>
-                                @foreach ($media->platforms as $platform)
-                                    <li>{{ $platform->name }}</li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <p>No disponible en ninguna plataforma.</p>
-                        @endif
-                    </div>
-                @endforeach
-
             </div>
-            {{-- <x-media>
-            </x-media> --}}
         </x-content>
     </div>
 </div>

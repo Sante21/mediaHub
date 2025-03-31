@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('categories', compact('categories'));
     }
 
     /**
@@ -21,7 +23,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('category.create', compact('categories'));
     }
 
     /**
@@ -29,7 +32,12 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $valid = $request->validated([
+            'name' => 'required|string|max:100',
+        ]);
+
+        Category::create($valid);
+        return redirect('/category');
     }
 
     /**
@@ -37,7 +45,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -45,7 +53,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $category = Category::find($category->id);
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -53,14 +62,27 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $valid = $request->validate([
+            'name' => 'required|string|max:100',
+        ]);
+
+        $category = new Category();
+
+        $category-> name = $valid['name'];
+
+        $category->save();
+        return redirect('/category');
+
+        Category::update($valid);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect('/category');
     }
 }

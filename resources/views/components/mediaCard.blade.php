@@ -13,6 +13,7 @@
         <!-- Centering wrapper -->
         <div
             class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+            {{-- <p>{{$platforms}}</p> --}}
             <div
                 class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
                 <img src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
@@ -38,10 +39,7 @@
                 <div class="flex items-center justify-between mb-3">
                     <h5
                         class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
-                        {{ $title }} -
-                        @foreach ($media->platforms as $platform)
-                            <li>{{ $platform->name }}</li>
-                        @endforeach
+                        {{ $title }} - {{ $category }}
                     </h5>
                     <p
                         class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
@@ -51,7 +49,7 @@
                                 d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        {{ $rating }}5.0
+                        5.0
                     </p>
                 </div>
                 <p
@@ -106,6 +104,8 @@
                                 d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z"
                                 clip-rule="evenodd"></path>
                         </svg>
+                        {{ $platform }}
+
                     </span>
                     <span
                         class="cursor-pointer rounded-full border border-gray-900/5 bg-gray-900/5 p-3 text-gray-900 transition-colors hover:border-gray-900/10 hover:bg-gray-900/10 hover:!opacity-100 group-hover:opacity-70">

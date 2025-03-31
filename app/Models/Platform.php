@@ -15,8 +15,8 @@ class Platform extends Model
     ];
 
     // Relations
-    public function media() {
-        return $this->belongsToMany(Media::class, 'media_platform')->withTimestamps();
+    public function medias() {
+        return $this->belongsToMany(Media::class);
     }
 
 }

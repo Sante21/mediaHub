@@ -20,11 +20,11 @@ class Media extends Model
 
     // Relations
     public function categories() {
-        return $this->belongsToMany(Category::class, 'category_media')->withTimestamps();
+        return $this->belongsToMany(Category::class);
     }
 
     public function collections() {
-        return $this->belongsToMany(Collection::class, 'collection_media')->withTimestamps();
+        return $this->belongsToMany(Collection::class);
     }
 
     public function reviews() {
@@ -32,14 +32,10 @@ class Media extends Model
     }
 
     public function watchlist() {
-        return $this->belongsToMany(User::class, 'watchlist')->withTimestamps();
+        return $this->belongsToMany(User::class);
     }
 
     public function platforms() {
-        return $this->belongsToMany(Platform::class, 'media_platforms')->withTimestamps();
+        return $this->belongsToMany(Platform::class);
     }
-
-    // public function creators() {
-    //     return $this->belongsToMany(Creator::class, 'creator_media')->withTimestamps();
-    // }
 }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('media_platforms', function (Blueprint $table) {
+        Schema::create('media_platform', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('media_id')->constrained('media')->onDelete('cascade');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('media_platforms');
+        Schema::dropIfExists('media_platform');
     }
 };

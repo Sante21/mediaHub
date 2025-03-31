@@ -15,9 +15,10 @@ class MediaController extends Controller
     public function index()
     {
         $medias = Media::all();
-        $medias = Media::with(['platforms', 'reviews'])
-        ->withAvg('reviews', 'rating') // Calcula el promedio de rating por cada media
-        ->get();
+        // $medias = Media::with(['platforms', 'reviews'])
+        // ->withAvg('reviews', 'rating') // Calcula el promedio de rating por cada media
+        // ->get();
+        // return $medias;
         return view('medias', compact('medias'));
     }
 
@@ -79,7 +80,7 @@ class MediaController extends Controller
     public function edit(Media $media)
     {
         // var_dump( $media);
-         $media = Media::find($media->id);
+        $media = Media::find($media->id);
         return view('media.edit', compact('media'));
         // return view('newmedia', compact('media'));
     }
@@ -108,7 +109,7 @@ class MediaController extends Controller
         $media-> image = $valid['image'];
 
         $media->save();
-        return redirect('/home');
+        return redirect('/media');
 
         Media::update($valid);
     }

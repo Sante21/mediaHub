@@ -23,6 +23,7 @@ class CollectionController extends Controller
      */
     public function create()
     {
+        $collections = Collection::all();
         return view('collection.create');
     }
 
