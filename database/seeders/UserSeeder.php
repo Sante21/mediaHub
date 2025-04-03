@@ -13,17 +13,22 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        // $roleAdmin = Role::where('name', 'Admin')->first();
-        // $roleMember = Role::where('name', 'Member')->first();
-
-        // User::factory(2)->create()->each(function($user) use ($roleAdmin) {
-
-        // });
         User::create([
             'name' => 'Iker',
             'email' => 'ikersan2005@gmail.com',
-            'password' => '12345678', // Asegúrate de usar una contraseña segura
+            'password' => '12345678',
+        ]);
+
+        User::create([
+            'name' => 'Steam',
+            'email' => 'soporte@steam.com',
+            'password' => '12345678',
+        ]);
+
+        User::create([
+            'name' => 'Miguel',
+            'email' => 'miguel@gmail.com',
+            'password' => '12345678',
         ]);
 
         User::factory(10)->create();

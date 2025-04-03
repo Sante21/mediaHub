@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::All();
+        return view('users', compact('users'));
     }
 
     /**
@@ -27,7 +28,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreWatchlistRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Watchlist $watchlist)
+    public function show(User $watchlist)
     {
         //
     }
@@ -43,7 +44,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Watchlist $watchlist)
+    public function edit(User $watchlist)
     {
         //
     }
@@ -51,7 +52,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateWatchlistRequest $request, Watchlist $watchlist)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -59,8 +60,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Watchlist $watchlist)
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'Usuario eliminado correctamente.');
     }
 }

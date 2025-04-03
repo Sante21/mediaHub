@@ -19,9 +19,9 @@ class MediaFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(4),
-            'title' => $this->faker->jobTitle(),
+            // 'title' => $this->faker->jobTitle(),
             'description' => $this->faker->paragraph(),
-            'release_year' => $this->faker->dateTime(),
+            'release_year' => $this->faker->numberBetween(1950, 2025),
             'type' => $this->faker->randomElement(['movie', 'series', 'game']),
             // 'category' => $this->faker->randomElement(['horror', 'Thriller', 'Fantasy', 'Action', 'Comedy', 'Post-Apocaliptic', 'Historical']),
         ];

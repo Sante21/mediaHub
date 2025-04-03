@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Watchlist;
+use App\Models\Media;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreWatchlistRequest;
 use App\Http\Requests\UpdateWatchlistRequest;
 
@@ -13,7 +15,8 @@ class WatchlistController extends Controller
      */
     public function index()
     {
-        //
+        $medias = Media::all();
+        return view('watchlist', compact('medias'));
     }
 
     /**

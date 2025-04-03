@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Models\Platform;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMediaRequest;
 use App\Http\Requests\UpdateMediaRequest;
@@ -15,10 +17,6 @@ class MediaController extends Controller
     public function index()
     {
         $medias = Media::all();
-        // $medias = Media::with(['platforms', 'reviews'])
-        // ->withAvg('reviews', 'rating') // Calcula el promedio de rating por cada media
-        // ->get();
-        // return $medias;
         return view('medias', compact('medias'));
     }
 
@@ -27,8 +25,11 @@ class MediaController extends Controller
      */
     public function create()
     {
-        $medias = Media::all();
-        return view('media.create', compact('medias'));
+        // $medias = Media::all();
+        $medias = Media::paginate(15);
+        $platforms = Platform::all();
+        $categories = Category::all();
+        return view('media.create', compact('medias', 'platforms', 'categories'));
     }
 
     /**
@@ -37,81 +38,95 @@ class MediaController extends Controller
     public function store(Request $request)
     {
         $valid = $request->validate([
-            'title' => 'required|string|max:250',
+            'title' => 'required|string|max:75',
             'description' => 'required|string|max:500',
-            'release_year' => 'required|date',
-            'type' => 'required|string',
-            /*'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:5120', // Validación de la imagen*/
-        ],
-        [
-            'release_year.date' => 'Debe de ser una fecha'
+            'release_year' => 'required|integer|between:1950,2025',
+            'type' => 'required|string|in:movie,series,game',
+        ], [
+            'title.required' => 'El campo título es obligatorio.',
+            'description.required' => 'El campo descripción es obligatorio.',
+            'release_year.required' => 'El campo año de lanzamiento es obligatorio.',
+            'type.required' => 'El campo tipo es obligatorio.',
         ]);
-        // $media = new Media();
 
-        // $media-> title = $valid['title'];
-        // $media-> description = $valid['description'];
-        // $media-> release_year = $valid['release_year'];
-        // $media-> type = $valid['type'];
+        $media = Media::create($valid);
 
-        // $media->save();
+		// Adjuntar plataformas
+		$platformsIds = $request->input('platforms', []); // ['1', '2', ...]
+		$media->platforms()->attach($platformsIds);
 
-        // Manejo de la imagen
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $imagePath = $request->file('image')->store('images', 'public'); // Guardar la imagen en el almacenamiento público
-            $valid['image'] = $imagePath; // Asignar la ruta de la imagen al arreglo de validación
-        }
+        // Adjuntar plataformas
+		$categoriesIds = $request->input('categories', []); // ['1', '2', ...]
+		$media->categories()->attach($categoriesIds);
 
-        Media::create($valid);
-
-        return redirect('/media');
+		return redirect()->route('media.index');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Media $media)
     {
+        $platforms = Platform::all();
+        $categories = Category::all();
         return view('media.show', compact('media'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Media $media)
+    public function edit($id)
     {
-        // var_dump( $media);
-        $media = Media::find($media->id);
-        return view('media.edit', compact('media'));
-        // return view('newmedia', compact('media'));
+        $platforms = Platform::all();
+        $categories = Category::all();
+        $media = Media::findOrFail($id);
+
+        return view('media.edit', compact('media', 'platforms', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Media $media)
+    public function update(Request $request, Media $medium)
     {
+        // dd($request->all());
         $valid = $request->validate([
-            'title' => 'required|string|max:250',
+            'title' => 'required|string|max:75',
             'description' => 'required|string|max:500',
-            'release_year' => 'required|date',
-            'type' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048', // Validación de la imagen
-        ],
-        [
-            'release_year.date' => 'Debe de ser una fecha'
+            'release_year' => 'required|integer|between:1950,2025',
+            'type' => 'required|string|in:movie,series,game',
+            'platforms' => 'required|array',  // Asegúrate de que 'platforms' sea un array
+            'platforms.*' => 'exists:platforms,id',
+            'categories' => 'required|array',  // Asegúrate de que 'categories' sea un array
+            'categories.*' => 'exists:categories,id',
+        ], [
+            'title.required' => 'El campo título es obligatorio.',
+            'description.required' => 'El campo descripción es obligatorio.',
+            'release_year.required' => 'El campo año de lanzamiento es obligatorio.',
+            'type.required' => 'El campo tipo es obligatorio.',
+            'platforms.required' => 'Debes seleccionar al menos una plataforma.',
+            'categories.required' => 'Debes seleccionar al menos una categoría.',
         ]);
-        $media = new Media();
 
-        $media-> title = $valid['title'];
-        $media-> description = $valid['description'];
-        $media-> release_year = $valid['release_year'];
-        $media-> type = $valid['type'];
-        $media-> image = $valid['image'];
+        // dd($valid);
 
-        $media->save();
-        return redirect('/media');
+        $medium->title = $valid['title'];
+        $medium->description = $valid['description'];
+        $medium->release_year = $valid['release_year'];
+        $medium->type = $valid['type'];
 
-        Media::update($valid);
+        $medium->save();
+
+        // $platformsIds = $request->input('platforms', []);
+
+        $platformsIds = $valid['platforms'];
+		$medium->platforms()->sync($platformsIds);
+
+        $categoriesIds = $valid['categories'];
+		$medium->categories()->sync($categoriesIds);
+
+        return redirect()->route('media.index');
     }
 
     /**
@@ -119,8 +134,8 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
-        $media = Media::find($id);
+        $media = Media::findOrFail($id);
         $media->delete();
-        return redirect('/media');
+        return redirect()->route('media.create');
     }
 }

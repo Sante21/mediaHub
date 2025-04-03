@@ -17,11 +17,11 @@ class Watchlist extends Model
     ];
 
     // Relations
-    public function user() {
+    public function users() {
         return $this->belongsTo(User::class);
     }
 
-    public function media() {
+    public function medias() {
         return $this->belongsTo(Media::class);
     }
 

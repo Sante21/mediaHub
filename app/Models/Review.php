@@ -16,4 +16,16 @@ class Review extends Model
         'rating',
         'comment',
     ];
+
+    // Relations
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
+    }
+
+    public function user()
+    {
+    return $this->belongsTo(User::class);
+    }
+
 }

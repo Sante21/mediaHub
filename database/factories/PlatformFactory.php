@@ -17,7 +17,7 @@ class PlatformFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->randomElement(['Netflix', 'Prime Video', 'Disney+', 'Steam', 'Epic Games'])
+            'name' => $this->faker->randomElement(['Netflix', 'Prime', 'Disney', 'Steam', 'Epic Games'])
         ];
     }
 }

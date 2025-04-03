@@ -13,6 +13,6 @@ class MediaPlatformSeeder extends Seeder
      */
     public function run(): void
     {
-        // MediaPlatform::factory(15)->create();
+        MediaPlatform::factory(10)->create();
     }
 }

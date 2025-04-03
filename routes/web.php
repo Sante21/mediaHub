@@ -3,12 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\WatchlistController;
 use App\Http\Controllers\CategoryController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,9 +32,12 @@ Route::middleware('auth')->group(function () {
 Route::resource('media', MediaController::class);
 Route::resource('platform', PlatformController::class);
 Route::resource('collection', CollectionController::class);
+// Route::resource('review', ReviewController::class);
+Route::get('/media/{media}/reviews', [ReviewController::class, 'index'])->name('media.reviews');
+Route::post('media/{media}/reviews', [ReviewController::class, 'store'])->name('review.store');
 
 Route::resource('user', UserController::class);
-// Route::resource('watchlist', WatchlistController::class);
+Route::resource('watchlist', WatchlistController::class);
 // Route::resource('category', CategoryController::class);
 
 Route::middleware('auth')->group(function () {

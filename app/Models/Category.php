@@ -15,7 +15,7 @@ class Category extends Model
     ];
 
     // Relations
-    public function media() {
+    public function medias() {
         return $this->belongsToMany(Media::class, 'category_media')->withTimestamps();
     }
 }

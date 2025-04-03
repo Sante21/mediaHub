@@ -1,18 +1,24 @@
-<!-- component -->
-<style>
-    * {
-        scrollbar-width: none;
-    }
+@extends('layout')
 
-    *::-webkit-scrollbar {
-        display: none;
-    }
-</style>
-<div class="flex justify-center items-center">
-    <div class="max-w-[720px] mx-auto">
-        <!-- Centering wrapper -->
-        <div
-            class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+@section('content')
+    @role('admin')
+        <button><a href="platform/create">Crear una nueva plataforma</a></button>
+    @endrole
+    {{-- @foreach ($platforms as $platform)
+                <x-mediaCard platform="{{$platform}}" id="{{$platform->id}}" title="{{$platform->title}}" descr="{{$platform->description}}">
+                </x-mediaCard>
+            @endforeach --}}
+    <div id="platforms">
+        <h1 class="font-bold py-4 uppercase">All the Platforms</h1>
+        <div id="stats" class="flex space-x-6 overflow-x-auto p-4">
+            @foreach ($platforms as $platform)
+                <a href="/platforms/{{ $platform->id }}">
+                    <x-platformCard name='{{ $platform->name }}' id="{{ $platform->id }}">
+                    </x-platformCard>
+                </a>
+            @endforeach
+        </div>
+        <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
             {{-- <p>{{$platforms}}</p> --}}
             <div
                 class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
@@ -41,22 +47,13 @@
                     </h5>
                     <p
                         class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
-                        {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                             class="-mt-0.5 h-5 w-5 text-yellow-700">
                             <path fill-rule="evenodd"
                                 d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
                                 clip-rule="evenodd"></path>
-                        </svg> --}}
-                        {{-- <a href="/review"> --}}
-                        <a href="{{ route('media.reviews', ['media' => $id]) }}">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                class="-mt-0.5 h-5 w-5" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                        </a>
-                        {{-- 5.0 --}}
+                        </svg>
+                        5.0
                     </p>
                 </div>
                 <p
@@ -84,4 +81,4 @@
             </div>
         </div>
     </div>
-</div>
+@endsection

@@ -13,6 +13,6 @@ class CollectionMediaSeeder extends Seeder
      */
     public function run(): void
     {
-        CollectionMedia::factory(20)->create();
+        CollectionMedia::factory(10)->create();
     }
 }
