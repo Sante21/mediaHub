@@ -13,11 +13,10 @@ class PlatformSeeder extends Seeder
      */
     public function run(): void
     {
-        Platform::create(['name' => 'Netflix']);
-        Platform::create(['name' => 'Prime']);
-        Platform::create(['name' => 'Disney']);
-        Platform::create(['name' => 'Steam']);
-        Platform::create(['name' => 'Epic Games']);
-        // Platform::factory(10)->create();
+        Platform::create(['name' => 'Netflix', 'image' => 'images/platforms/Netflix.png']);
+        Platform::create(['name' => 'Prime', 'image' => 'images/platforms/Prime.png']);
+        Platform::create(['name' => 'Disney', 'image' => 'images/platforms/Disney.png']);
+        Platform::create(['name' => 'Steam', 'image' => 'images/platforms/Steam.png']);
+        Platform::create(['name' => 'Epic Games', 'image' => 'images/platforms/Epic Games.png']);
     }
 }

@@ -12,8 +12,8 @@ class Watchlist extends Model
 
     protected $fillable = [
         'user_id',
-        'media_id',
-        'status',
+        // 'media_id',
+        // 'status',
     ];
 
     // Relations
@@ -22,7 +22,7 @@ class Watchlist extends Model
     }
 
     public function medias() {
-        return $this->belongsTo(Media::class);
+        return $this->belongsToMany(Media::class);
     }
 
 }

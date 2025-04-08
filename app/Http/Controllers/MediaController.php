@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use App\Models\Platform;
 use App\Models\Category;
+use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMediaRequest;
 use App\Http\Requests\UpdateMediaRequest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class MediaController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $this->authorize('seeMedias');
         $medias = Media::all();
         return view('medias', compact('medias'));
     }
@@ -25,6 +30,7 @@ class MediaController extends Controller
      */
     public function create()
     {
+        $this->authorize('createMedia');
         // $medias = Media::all();
         $medias = Media::paginate(15);
         $platforms = Platform::all();
@@ -42,6 +48,7 @@ class MediaController extends Controller
             'description' => 'required|string|max:500',
             'release_year' => 'required|integer|between:1950,2025',
             'type' => 'required|string|in:movie,series,game',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ], [
             'title.required' => 'El campo título es obligatorio.',
             'description.required' => 'El campo descripción es obligatorio.',
@@ -49,14 +56,17 @@ class MediaController extends Controller
             'type.required' => 'El campo tipo es obligatorio.',
         ]);
 
+        // $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME) . '.' . $request->image->extension();
+        // $request->image->move(public_path('images/medias'), $imageName);
+
         $media = Media::create($valid);
 
 		// Adjuntar plataformas
-		$platformsIds = $request->input('platforms', []); // ['1', '2', ...]
+		$platformsIds = $request->input('platforms', []);
 		$media->platforms()->attach($platformsIds);
 
         // Adjuntar plataformas
-		$categoriesIds = $request->input('categories', []); // ['1', '2', ...]
+		$categoriesIds = $request->input('categories', []);
 		$media->categories()->attach($categoriesIds);
 
 		return redirect()->route('media.index');
@@ -78,6 +88,7 @@ class MediaController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('editMedia');
         $platforms = Platform::all();
         $categories = Category::all();
         $media = Media::findOrFail($id);
@@ -134,6 +145,7 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('deletePlatform');
         $media = Media::findOrFail($id);
         $media->delete();
         return redirect()->route('media.create');

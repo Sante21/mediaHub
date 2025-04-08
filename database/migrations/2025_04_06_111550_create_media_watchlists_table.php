@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('watchlists', function (Blueprint $table) {
+        Schema::create('media_watchlist', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            // $table->foreignId('media_id')->constrained('media')->onDelete('cascade');
-            // $table->enum('status', ['pending', 'watching', 'completed']);
+            $table->foreignId('watchlist_id')->constrained()->onDelete('cascade');
+            $table->foreignId('media_id')->constrained()->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('watchlists');
+        Schema::dropIfExists('media_watchlist');
     }
 };

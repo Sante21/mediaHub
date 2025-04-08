@@ -19,8 +19,9 @@ return new class extends Migration
             $table->integer('release_year');
             $table->enum('type', ['movie', 'series', 'game']);
             // $table->string('image')->nullable();
-            // $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            // $table->enum('category', ['horror', 'Thriller', 'Fantasy', 'Action', 'Comedy', 'Post-Apocaliptic', 'Historical']);
+
+            // $table->unsignedBigInteger('watchlist_id')->nullable();
+            // $table->foreign('watchlist_id')->references('id')->on('watchlists');
 
             $table->timestamps();
         });

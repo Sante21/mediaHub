@@ -29,15 +29,51 @@ Route::get('/home', [HomeController::class, 'home'])->middleware(['auth'])->name
 Route::middleware('auth')->group(function () {
 });
 
-Route::resource('media', MediaController::class);
-Route::resource('platform', PlatformController::class);
-Route::resource('collection', CollectionController::class);
-// Route::resource('review', ReviewController::class);
-Route::get('/media/{media}/reviews', [ReviewController::class, 'index'])->name('media.reviews');
-Route::post('media/{media}/reviews', [ReviewController::class, 'store'])->name('review.store');
+Route::middleware('auth')->group(function () {
+    Route::resource('media', MediaController::class);
+});
 
-Route::resource('user', UserController::class);
-Route::resource('watchlist', WatchlistController::class);
+Route::get('/media/{id}/watchlist', [WatchlistController::class, 'addMedia'])->name('watchlist.addMedia');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('platform', PlatformController::class);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('collection', CollectionController::class);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/media/{media}/reviews', [ReviewController::class, 'index'])->name('media.reviews');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('media/{media}/reviews', [ReviewController::class, 'store'])->name('review.store');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::resource('user', UserController::class);
+});
+
+// Route::middleware('auth')->group(function () {
+//     Route::resource('watchlist', WatchlistController::class);
+// });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/watchlist', [WatchlistController::class, 'index'])->name('watchlist.index');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/watchlist/{media}/add', [WatchlistController::class, 'addToWatchlist'])->name('watchlist.add');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::delete('/watchlist/{media}', [WatchlistController::class, 'remove'])->name('watchlist.remove');
+});
+
+
+
+// Route::resource('review', ReviewController::class);
 // Route::resource('category', CategoryController::class);
 
 Route::middleware('auth')->group(function () {

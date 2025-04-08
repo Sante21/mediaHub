@@ -13,6 +13,8 @@ class MediaPlatformSeeder extends Seeder
      */
     public function run(): void
     {
-        MediaPlatform::factory(10)->create();
+        // MediaPlatform::factory(10)->create();
+        MediaPlatform::create(['media_id' => 1, 'platform_id' => 1]);
+        MediaPlatform::create(['media_id' => 1, 'platform_id' => 2]);
     }
 }

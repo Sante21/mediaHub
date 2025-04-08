@@ -164,7 +164,7 @@
                                     name="platforms[]" id="platforms" required multiple>
 
                                     <option value="">Select a Platform</option>
-                                    @foreach ($platforms as $platform)
+                                    @foreach ($platforms->unique('name') as $platform)
                                         <option value="{{ $platform->id }}">{{ $platform->name }}</option>
                                     @endforeach
                                 </select>

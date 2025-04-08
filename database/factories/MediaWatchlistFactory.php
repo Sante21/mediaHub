@@ -3,13 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use \App\Models\User;
-use \App\Models\Media;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Watchlist>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MediaWatchlist>
  */
-class WatchlistFactory extends Factory
+class MediaWatchlistFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +17,7 @@ class WatchlistFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
-            // 'media_id' => Media::factory(),
+            //
         ];
     }
 }

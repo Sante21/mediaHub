@@ -2,7 +2,7 @@
 
 @section('content')
     @role('admin')
-        <button><a href="media/create">Añadir un nuevo usuario</a></button>
+        <button><a href="user/create">Añadir un nuevo usuario</a></button>
     @endrole
     <!-- component -->
 

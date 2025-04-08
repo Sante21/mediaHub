@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             PlatformSeeder::class,
-            // MediaSeeder::class,
+            MediaSeeder::class,
             MediaPlatformSeeder::class,
             WatchlistSeeder::class,
             CollectionSeeder::class,

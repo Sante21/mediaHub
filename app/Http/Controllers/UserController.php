@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreWatchlistRequest;
 use App\Http\Requests\UpdateWatchlistRequest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class UserController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $this->authorize('manageUsers');
         $users = User::All();
         return view('users', compact('users'));
     }
@@ -22,7 +25,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('manageUsers');
+        $users = User::paginate(15);
+        return view('user.create', compact('users'));
     }
 
     /**
@@ -30,7 +35,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $valid = $request->validate([
+            'name' => 'required|string|max:75',
+            'email' => 'required|email|max:255',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'name.required' => 'El campo nombre es obligatorio.',
+            'email.required' => 'El campo correo electrónico es obligatorio.',
+            'password.required' => 'El campo contraseña es obligatorio.',
+        ]);
+
+        $user = User::create($valid);
+
+		return redirect()->route('media.index');
     }
 
     /**

@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
         User::find(1)->assignRole("admin");
 
         $rolPlatform = Role::create(['name' => 'plartform']);
-        User::find(2)->assignRole("Plartform");
+        User::find(2)->assignRole("plartform");
 
         $rolClient = Role::create(['name' => 'client']);
         User::find(3)->assignRole("client");
@@ -38,7 +38,7 @@ class RoleSeeder extends Seeder
 
         $seeMedias = Permission::create(['name' => 'seeMedias']);
         $rolAdmin->givePermissionTo($seeMedias);
-        $rolAdmin->givePermissionTo($seeMedias);
+        $rolPlatform->givePermissionTo($seeMedias);
         $rolClient->givePermissionTo($seeMedias);
 
         $createPlatform = Permission::create(['name' => 'createPlatform']);
@@ -52,5 +52,8 @@ class RoleSeeder extends Seeder
         $deletePlatform = Permission::create(['name' => 'deletePlatform']);
         $rolAdmin->givePermissionTo($deletePlatform);
         $rolPlatform->givePermissionTo($deletePlatform);
+
+        $manageUsers = Permission::create(['name' => 'manageUsers']);
+        $rolAdmin->givePermissionTo($manageUsers);
     }
 }

@@ -31,15 +31,20 @@ class PlatformController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $valid = $request->validate([
             'name' => 'required|string|max:100',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
         ], [
             'name.required' => 'El campo nombre es obligatorio.',
         ]);
 
-        Platform::create([
-            'name' => $validated['name'],
-        ]);
+        $imageName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME) . '.' . $request->image->extension();
+        $request->image->move(public_path('images/platforms'), $imageName);
+
+        $platform = new Platform();
+        $platform->name = $valid['name'];
+        $platform->image = 'images/platforms/' . $imageName;
+        $platform->save();
 
         return redirect()->route('platform.index'); // Redirigir de nuevo a la vista principal
     }
@@ -49,9 +54,10 @@ class PlatformController extends Controller
      */
     public function show(Platform $platform)
     {
+        $platforms = Platform::all();
         $medias = $platform->medias;
 
-        return view('platform.show', compact('platform', 'medias'));
+        return view('platform.show', compact('platforms', 'platform', 'medias'));
     }
 
     /**
@@ -66,15 +72,21 @@ class PlatformController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePlatformRequest $request, Platform $platform)
+    public function update(Request $request, Platform $platform)
     {
         $valid = $request->validate([
             'name' => 'required|string|max:100',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
         ], [
             'name.required' => 'El campo name es obligatorio.',
         ]);
 
         $platform->name = $valid['name'];
+        $platform->save();
+
+        $imageName = pathinfo($request->image->getMediaOriginalName(), PATHINFO_FILENAME) . '.' . $request->image->extension();
+        $request->image->move(public_path('images/platforms'), $imageName);
+        $platform->image = $imageName;
         $platform->save();
 
         return redirect()->route('platform.index');

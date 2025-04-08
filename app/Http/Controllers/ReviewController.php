@@ -16,13 +16,9 @@ class ReviewController extends Controller
 
     public function index($mediaId)
     {
-        // Obtener el medio por su ID
         $media = Media::findOrFail($mediaId);
+        $reviews = $media->reviews;
 
-        // Obtener las reseñas de ese medio
-        $reviews = $media->reviews; // O también puedes usar ->with('reviews') si estás haciendo una consulta más compleja
-
-        // Pasar los datos a la vista
         return view('review.show', compact('media', 'reviews'));
     }
 

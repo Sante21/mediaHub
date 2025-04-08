@@ -1,3 +1,8 @@
+<?php
+use App\Models\Media;
+
+$medias = Media::all();
+?>
 <div id="menu" class="bg-white/10 col-span-3 rounded-lg p-4 ">
     <h1
         class="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 to-transparent bg-clip-text text-transparent">
@@ -52,7 +57,7 @@
                 </div>
                 <div
                     class="absolute -top-3 -right-3 md:top-0 md:right-0 px-2 py-1.5 rounded-full bg-indigo-800 text-xs font-mono font-bold">
-                    23
+                    {{$medias->count();}}
                 </div>
             </div>
         </a>
